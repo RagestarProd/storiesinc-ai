@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getEntry } from 'astro:content';
 
-const page = await getEntry('content', 'home');
+const page = await getEntry('pages', 'home');
 ---
 
 <!doctype html>
