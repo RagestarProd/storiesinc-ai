@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: RagestarProd/storiesinc-ai
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/content/home.md"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - { label: "Title", name: "title", type: "string" }
+          - { label: "Body", name: "body", type: "markdown" }
