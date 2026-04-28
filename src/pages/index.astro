@@ -1,30 +1,14 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 const page = await getEntry('pages', 'home');
+
+if (!page) {
+  throw new Error('Home page content not found');
+}
+
+const { Content } = await render(page);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={page.data.title} description="" />
-  </head>
-  <body>
-    <Header />
-    
-    <main>
-      <h1 class="fade-in">{page.data.title}</h1>
-      <div class="fade-in" set:html={page.body} />
-    </main>
-
-    <Footer />
-
-    <script>
-      import { animate } from "motion"
-      animate(".fade-in", { opacity: [0, 1], y: [20, 0] })
-    </script>
-  </body>
-</html>
+<h1>{page.data.title}</h1>
+<Content />
